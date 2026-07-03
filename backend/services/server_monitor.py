@@ -1,20 +1,25 @@
-# services/server_monitor.py
+import psutil
+import socket
 
 def get_server_health():
 
+    cpu = psutil.cpu_percent(interval=None)
+
+    memory = psutil.virtual_memory().percent
+
+    disk = psutil.disk_usage("C:/").percent
+
+    status = "Healthy"
+
+    if cpu > 80 or memory > 80:
+        status = "Warning"
+
     return [
         {
-            "host": "server01",
-            "cpu": 35,
-            "memory": 62,
-            "disk": 48,
-            "status": "Healthy"
-        },
-        {
-            "host": "server02",
-            "cpu": 75,
-            "memory": 70,
-            "disk": 55,
-            "status": "UP"
+            "host": socket.gethostname(),
+            "cpu": cpu,
+            "memory": memory,
+            "disk": disk,
+            "status": status
         }
     ]

@@ -1,7 +1,6 @@
-
 from db_conn_new import get_oracle_connection
 
-def get_sessions(db_name):
+def get_backup(db_name):
 
     conn = get_oracle_connection(db_name)
 
@@ -9,18 +8,13 @@ def get_sessions(db_name):
 
     cursor.execute("""
         SELECT
-            sid,
-            serial#,
-            username,
-            status,
-            osuser,
-            machine,
-            program,
-            module,
-            action,
-            logon_time
-        FROM v$session
-        WHERE username IS NOT NULL
+            SESSION_KEY,
+            INPUT_TYPE,
+            STATUS,
+            START_TIME,
+            END_TIME
+        FROM V$RMAN_BACKUP_JOB_DETAILS
+        ORDER BY START_TIME DESC
     """)
 
     columns = [col[0].lower() for col in cursor.description]

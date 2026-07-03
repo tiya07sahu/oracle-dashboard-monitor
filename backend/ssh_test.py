@@ -1,8 +1,8 @@
 import paramiko
 
-HOST = "YOUR_SERVER_IP"
-USERNAME = "YOUR_USERNAME"
-PASSWORD = "YOUR_PASSWORD"
+HOST = "10.145.1.235"
+USERNAME = "trg"
+PASSWORD = "trg123"
 
 try:
     ssh = paramiko.SSHClient()
@@ -10,6 +10,7 @@ try:
 
     ssh.connect(
         hostname=HOST,
+        port=22,
         username=USERNAME,
         password=PASSWORD
     )
