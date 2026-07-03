@@ -6,7 +6,7 @@ import ServerTab from "./components/ServerTab";
 import SessionTab from "./components/SessionTab";
 import TablespaceTab from "./components/TablespaceTab";
 import OverviewTab from "./components/OverviewTab";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/SidebarTab";
 import DatabaseTab from "./components/DatabaseTab";
 import AlertsTab from "./components/AlertsTab";
 import DataFilesTab from "./components/DataFilesTab";
